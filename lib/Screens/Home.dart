@@ -3,34 +3,39 @@ import 'package:clone_yt/Screens/Categry.dart';
 import 'package:clone_yt/Screens/App_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:clone_yt/VideoCard.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-          slivers: [
-            AppBars(),
-            SliverToBoxAdapter(
-                child: Container(
-                  height: 40.0,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: ctgry.length,
-                    itemBuilder: (context, index1) {
-                      return Center(child: Categry(ctgry[index1].category,ctgry[index1].isExp));
-                    },
-                 ),
-                )),
-            SliverList(delegate: SliverChildBuilderDelegate((context, index) {
-              return VideoCard(profno: videos[index].profno, title: videos[index].title, desc:videos[index].desc, thumno: videos[index].thumno);
+      body: CustomScrollView(slivers: [
+        AppBars(),
+        SliverToBoxAdapter(
+            child: Container(
+          height: 40.0,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: ctgry.length,
+            itemBuilder: (context, index1) {
+              return Center(
+                  child: Categry(ctgry[index1].category, ctgry[index1].isExp));
             },
-            childCount: videos.length,
-            )
-            )
-          ]
-      ),
+          ),
+        )),
+        SliverList(
+            delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            return VideoCard(
+                profno: videos[index].profno,
+                title: videos[index].title,
+                desc: videos[index].desc,
+                thumno: videos[index].thumno);
+          },
+          childCount: videos.length,
+        ))
+      ]),
     );
   }
 }
@@ -87,4 +92,3 @@ class HomePage extends StatelessWidget {
       ),
       ),
 */
-
